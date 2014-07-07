@@ -1,4 +1,6 @@
 $(function() {
+
+
   showDetailsForm = function() {
     $('#screenshareForm').hide();
     $('#appDetails').show();
@@ -40,35 +42,45 @@ $(function() {
     setDetails($('#appID').val(), $('#appURL').val());
   });
 
+  onAccessApproved = function(data) {
+    console.log("We have chosen something");
+    console.log(data);
+  }
+
    
   $("#screenshareForm").submit(function(e) {
     e.preventDefault();
 
-    chrome.storage.sync.get(["appid", "baseUrl"], function(data) {
-      console.log(data);
 
-      var client = new respoke.Client({
-        appId: data['appid'],
-        developmentMode: false,
-        baseURL: data['baseUrl']
-      });
+    pending_request_id = chrome.desktopCapture.chooseDesktopMedia(
+        ["screen", "window"], onAccessApproved);
 
-      var endpoint = client.getEndpoint({"id" : $("input[name='remoteID']").val()});
 
-      endpoint.startCall({
-        constraints: {
-          audio: false,
-          video: {
-            mandatory: {
-              chromeMediaSource: 'screen',
-              maxWidth: 1280,
-              maxHeight: 720,
-            },
-            optional: []
-          }
-        }
-      });
-    });
+    // chrome.storage.sync.get(["appid", "baseUrl"], function(data) {
+    //   console.log(data);
+
+    //   var client = new respoke.Client({
+    //     appId: data['appid'],
+    //     developmentMode: false,
+    //     baseURL: data['baseUrl']
+    //   });
+
+    //   var endpoint = client.getEndpoint({"id" : $("input[name='remoteID']").val()});
+
+    //   endpoint.startCall({
+    //     constraints: {
+    //       audio: false,
+    //       video: {
+    //         mandatory: {
+    //           chromeMediaSource: 'screen',
+    //           maxWidth: 1280,
+    //           maxHeight: 720,
+    //         },
+    //         optional: []
+    //       }
+    //     }
+    //   });
+    // });
 
   });
   
