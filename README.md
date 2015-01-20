@@ -35,7 +35,7 @@ following changes.
     }]
 ```
 
-That's all! Now just [publis your Chrome extension](https://developer.chrome.com/webstore/publish) and [prompt your users to install it](https://developer.chrome.com/webstore/inline_installation).
+That's all! Now just [publish your Chrome extension](https://developer.chrome.com/webstore/publish) and [prompt your users to install it](https://developer.chrome.com/webstore/inline_installation).
 
 ```
     if (respoke.needsChromeExtension && !respoke.hasChromeExtension) {
