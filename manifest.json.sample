@@ -1,0 +1,22 @@
+{
+  "manifest_version": 2,
+  "name": "My Screen Sharing Extension",
+  "description": "This extension enables screen sharing via Respoke.js in Chrome.",
+  "version": "0.1",
+  "content_security_policy": "default-src",
+  "permissions": [
+    "storage",
+    "tabs",
+    "desktopCapture",
+    "https://localhost:8080/*"
+  ],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": true
+  },
+  "content_scripts": [{
+    "matches": ["https://localhost:8080/*"],
+    "js": ["content.js"],
+    "run_at": "document_end"
+  }]
+}
