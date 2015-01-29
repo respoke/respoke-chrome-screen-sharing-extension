@@ -5,8 +5,6 @@
   "version": "0.1",
   "content_security_policy": "default-src",
   "permissions": [
-    "storage",
-    "tabs",
     "desktopCapture",
     "https://localhost:8080/*"
   ],
