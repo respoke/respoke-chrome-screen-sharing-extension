@@ -15,8 +15,6 @@ following changes.
 
 ```
     "permissions": [
-        "storage",
-        "tabs",
         "desktopCapture",
         "https://localhost:8080/*",
         "https://*.example.com/*",
