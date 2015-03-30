@@ -63,7 +63,7 @@ var injectIntoTab = function (tab) {
 chrome.windows.getAll({
     populate: true
 }, function (windows) {
-    windows.forEach(function(){
+    windows.forEach(function(currentWindow){
         currentWindow.tabs.forEach(function(currentTab){
             // Skip chrome:// and http:// (except localhost) pages
             // if you have a very specific domain(s) that you're running the extension on, you could change
