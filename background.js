@@ -69,7 +69,7 @@ chrome.windows.getAll({
             // if you have a very specific domain(s) that you're running the extension on, you could change
             // this if statement to match those domains to save on extra work and injecting into tabs that you have
             // no rights to
-            if( ! currentTab.url.match(/(chrome|http):\/\//gi) || currentTab.url.match(/http:\/\/localhost/gi)) {
+            if ( ! currentTab.url.match(/(chrome|http):\/\//gi) || currentTab.url.match(/http:\/\/localhost/gi)) {
                 injectIntoTab(currentTab);
             }
         })

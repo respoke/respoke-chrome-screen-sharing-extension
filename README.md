@@ -62,20 +62,20 @@ Due to the nature of the extension extending the `respoke.js` library, it has to
 That means that having a block of javascript, as below, won't tell you if the extension is installed/loaded.
 
 ```js
-if (!respoke.needsChromeExtension || (respoke.needsChromeExtension && respoke.hasChromeExtension)) {
+if (!respoke.needsChromeExtension || respoke.hasChromeExtension) {
     //remove our install button
 }
 ```
 
 This is because the `respoke.js` library loads, then your javascript runs and then the extension tells the `respoke.js` library that it's available.
 
-To get around this, the `respoke.js` library fires an event when any extension loads.
+To get around this, the `respoke.js` library fires an event when any respoke enabled extension loads.
 
 ```js
 respoke.listen('extension-loaded', function(data){
     console.log('extension loaded', data);
-    if (!respoke.needsChromeExtension || (respoke.needsChromeExtension && respoke.hasChromeExtension)) {
-        //remove an inline installtion button
+    if (!respoke.needsChromeExtension || respoke.hasChromeExtension) {
+        //remove an inline installation button
     }
 });
 ```
@@ -84,8 +84,7 @@ The `extension-loaded` event will fire for any kind of respoke based extension, 
 
 ```js
 {
-    browser: 'chrome',
-    type: 'screensharing'
+    type: 'screen-sharing'
 }
 
 ```
