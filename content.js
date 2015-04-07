@@ -32,11 +32,16 @@ port.onMessage.addListener(function (data) {
  * Listen to Respoke Client Library and pass it on to background scripts.
  */
 document.addEventListener('ct-respoke-source-id', function (evt) {
-    port.postMessage('bg-respoke-source-id');
+    port.postMessage({
+      event: 'bg-respoke-source-id',
+      data: evt.detail
+    });
 });
 
 /*
  * Ask the Chrome extension if it's available. It's response will be forwarded to the Respoke
  * Client library via the above event listener.
  */
-port.postMessage("bg-respoke-available");
+port.postMessage({
+  event: "bg-respoke-chrome-screen-sharing-available"
+});

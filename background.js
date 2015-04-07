@@ -13,18 +13,19 @@
  * This extension provides screen sharing functionality for the Respoke client library.
  */
 
-var mediaSources = ["screen", "window"];
-
 chrome.extension.onConnect.addListener(function (port) {
     console.assert(port.name === "respoke-port");
 
-    port.onMessage.addListener(function (msg) {
-        switch (msg) {
-            case "bg-respoke-available":
-                port.postMessage({type: "ct-respoke-available", available: true});
+    port.onMessage.addListener(function (data) {
+        var mediaSource;
+
+        switch (data.event) {
+            case "bg-respoke-chrome-screen-sharing-available":
+                port.postMessage({type: "ct-respoke-chrome-screen-sharing-available", available: true});
                 break;
             case "bg-respoke-source-id":
-                chrome.desktopCapture.chooseDesktopMedia(mediaSources, port.sender.tab, function (sourceId) {
+                mediaSource = data.data && data.data.source ? data.data.source : ['screen', 'window'];
+                chrome.desktopCapture.chooseDesktopMedia(mediaSource, port.sender.tab, function (sourceId) {
                     if (!sourceId) {
                         port.postMessage({type: "ct-respoke-source-id", error: 'PermissionDeniedError'});
                         return;
