@@ -1,20 +1,21 @@
 {
   "manifest_version": 2,
-  "name": "My Screen Sharing Extension",
-  "description": "This extension enables screen sharing via Respoke.js in Chrome.",
+  "name": "Broadcastify Screen Sharing",
+  "description": "Enables screen-sharing in Broadcastify",
   "version": "0.1",
   "content_security_policy": "default-src",
   "permissions": [
     "tabs",
     "desktopCapture",
-    "https://localhost:8080/*"
+    "https://4295bcc1.ngrok.com/*",
+    "https://broadcast-with-respoke.herokuapp.com/*"
   ],
   "background": {
     "scripts": ["background.js"],
     "persistent": true
   },
   "content_scripts": [{
-    "matches": ["https://localhost:8080/*"],
+    "matches": ["https://4295bcc1.ngrok.com/*", "https://broadcast-with-respoke.herokuapp.com/*"],
     "js": ["content.js"],
     "run_at": "document_end"
   }]
