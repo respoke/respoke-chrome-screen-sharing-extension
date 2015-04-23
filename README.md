@@ -55,6 +55,12 @@ function clickExtension(e){
 }
 ```
 
+To allow inline installation, a special `link` element must be present on the page.
+
+```html
+<link rel="chrome-webstore-item" href="'https://chrome.google.com/webstore/detail/<chrome-extension-app-id>'">
+```
+
 ## When is the extension loaded?
 
 Due to the nature of the extension extending the `respoke.js` library, it has to load after the library; at `document_end`. This means that it runs after all of your Javascript too.
