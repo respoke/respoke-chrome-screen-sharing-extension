@@ -8,14 +8,15 @@
     "tabs",
     "desktopCapture",
     "https://4295bcc1.ngrok.com/*",
-    "https://broadcast-with-respoke.herokuapp.com/*"
+    "https://broadcast-with-respoke.herokuapp.com/*",
+    "https://jsbin.com/*"
   ],
   "background": {
     "scripts": ["background.js"],
     "persistent": true
   },
   "content_scripts": [{
-    "matches": ["https://4295bcc1.ngrok.com/*", "https://broadcast-with-respoke.herokuapp.com/*"],
+    "matches": ["https://4295bcc1.ngrok.com/*", "https://broadcast-with-respoke.herokuapp.com/*", "https://jsbin.com/*"],
     "js": ["content.js"],
     "run_at": "document_end"
   }]
